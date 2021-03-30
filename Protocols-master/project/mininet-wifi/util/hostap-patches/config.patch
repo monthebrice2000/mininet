@@ -1,0 +1,189 @@
+diff --git hostapd/defconfig hostapd/defconfig
+index 1a3d9f9ba..e0a3b194f 100644
+--- hostapd/defconfig
++++ hostapd/defconfig
+@@ -115,11 +115,11 @@ CONFIG_EAP_TTLS=y
+ #CONFIG_EAP_TEAP=y
+ 
+ # Wi-Fi Protected Setup (WPS)
+-#CONFIG_WPS=y
++CONFIG_WPS=y
+ # Enable UPnP support for external WPS Registrars
+-#CONFIG_WPS_UPNP=y
++CONFIG_WPS_UPNP=y
+ # Enable WPS support with NFC config method
+-#CONFIG_WPS_NFC=y
++CONFIG_WPS_NFC=y
+ 
+ # EAP-IKEv2
+ #CONFIG_EAP_IKEV2=y
+@@ -136,33 +136,34 @@ CONFIG_PKCS12=y
+ 
+ # RADIUS authentication server. This provides access to the integrated EAP
+ # server from external hosts using RADIUS.
+-#CONFIG_RADIUS_SERVER=y
++CONFIG_RADIUS_SERVER=y
+ 
+ # Build IPv6 support for RADIUS operations
+ CONFIG_IPV6=y
+ 
+ # IEEE Std 802.11r-2008 (Fast BSS Transition)
+-#CONFIG_IEEE80211R=y
++CONFIG_IEEE80211R=y
++CONFIG_IEEE80211R_AP=y
+ 
+ # Use the hostapd's IEEE 802.11 authentication (ACL), but without
+ # the IEEE 802.11 Management capability (e.g., FreeBSD/net80211)
+ #CONFIG_DRIVER_RADIUS_ACL=y
+ 
+ # IEEE 802.11n (High Throughput) support
+-#CONFIG_IEEE80211N=y
++CONFIG_IEEE80211N=y
+ 
+ # Wireless Network Management (IEEE Std 802.11v-2011)
+ # Note: This is experimental and not complete implementation.
+-#CONFIG_WNM=y
++CONFIG_WNM=y
+ 
+ # IEEE 802.11ac (Very High Throughput) support
+-#CONFIG_IEEE80211AC=y
++CONFIG_IEEE80211AC=y
+ 
+ # IEEE 802.11ax HE support
+ # Note: This is experimental and work in progress. The definitions are still
+ # subject to change and this should not be expected to interoperate with the
+ # final IEEE 802.11ax version.
+-#CONFIG_IEEE80211AX=y
++CONFIG_IEEE80211AX=y
+ 
+ # Remove debugging code that is printing out debug messages to stdout.
+ # This can be used to reduce the size of the hostapd considerably if debugging
+@@ -171,7 +172,7 @@ CONFIG_IPV6=y
+ 
+ # Add support for writing debug log to a file: -f /tmp/hostapd.log
+ # Disabled by default.
+-#CONFIG_DEBUG_FILE=y
++CONFIG_DEBUG_FILE=y
+ 
+ # Send debug messages to syslog instead of stdout
+ #CONFIG_DEBUG_SYSLOG=y
+@@ -310,7 +311,7 @@ CONFIG_IPV6=y
+ #CONFIG_INTERWORKING=y
+ 
+ # Hotspot 2.0
+-#CONFIG_HS20=y
++CONFIG_HS20=y
+ 
+ # Enable SQLite database support in hlr_auc_gw, EAP-SIM DB, and eap_user_file
+ #CONFIG_SQLITE=y
+@@ -351,7 +352,7 @@ CONFIG_IPV6=y
+ # For more details refer to:
+ # http://wireless.kernel.org/en/users/Documentation/acs
+ #
+-#CONFIG_ACS=y
++CONFIG_ACS=y
+ 
+ # Multiband Operation support
+ # These extentions facilitate efficient use of multiple frequency bands
+@@ -371,7 +372,7 @@ CONFIG_IPV6=y
+ 
+ # Include internal line edit mode in hostapd_cli. This can be used to provide
+ # limited command line editing and history support.
+-#CONFIG_WPA_CLI_EDIT=y
++CONFIG_WPA_CLI_EDIT=y
+ 
+ # Opportunistic Wireless Encryption (OWE)
+ # Experimental implementation of draft-harkins-owe-07.txt
+@@ -383,3 +384,4 @@ CONFIG_IPV6=y
+ # Override default value for the wpa_disable_eapol_key_retries configuration
+ # parameter. See that parameter in hostapd.conf for more details.
+ #CFLAGS += -DDEFAULT_WPA_DISABLE_EAPOL_KEY_RETRIES=1
++CONFIG_SAE=y
+diff --git wpa_supplicant/bgscan_learn.c wpa_supplicant/bgscan_learn.c
+index cb732f709..ebac73b4b 100644
+--- wpa_supplicant/bgscan_learn.c
++++ wpa_supplicant/bgscan_learn.c
+@@ -544,7 +544,7 @@ static int bgscan_learn_notify_scan(void *priv,
+ 	 * done inside the bgscan module.
+ 	 */
+ 
+-	return 0;
++	return 1;
+ }
+ 
+ 
+diff --git wpa_supplicant/defconfig wpa_supplicant/defconfig
+index 792ab24ef..d3c298d67 100644
+--- wpa_supplicant/defconfig
++++ wpa_supplicant/defconfig
+@@ -169,10 +169,10 @@ CONFIG_EAP_TNC=y
+ # Wi-Fi Protected Setup (WPS)
+ CONFIG_WPS=y
+ # Enable WPS external registrar functionality
+-#CONFIG_WPS_ER=y
++CONFIG_WPS_ER=y
+ # Disable credentials for an open network by default when acting as a WPS
+ # registrar.
+-#CONFIG_WPS_REG_DISABLE_OPEN=y
++CONFIG_WPS_REG_DISABLE_OPEN=y
+ # Enable WPS support with NFC config method
+ #CONFIG_WPS_NFC=y
+ 
+@@ -226,7 +226,7 @@ CONFIG_CTRL_IFACE=y
+ 
+ # Include internal line edit mode in wpa_cli. This can be used as a replacement
+ # for GNU Readline to provide limited command line editing and history support.
+-#CONFIG_WPA_CLI_EDIT=y
++CONFIG_WPA_CLI_EDIT=y
+ 
+ # Remove debugging code that is printing out debug message to stdout.
+ # This can be used to reduce the size of the wpa_supplicant considerably
+@@ -480,7 +480,7 @@ CONFIG_IEEE80211AC=y
+ 
+ # Wireless Network Management (IEEE Std 802.11v-2011)
+ # Note: This is experimental and not complete implementation.
+-#CONFIG_WNM=y
++CONFIG_WNM=y
+ 
+ # Interworking (IEEE 802.11u)
+ # This can be used to enable functionality to improve interworking with
+@@ -568,7 +568,7 @@ CONFIG_WIFI_DISPLAY=y
+ #
+ # For more details refer to:
+ # http://wireless.kernel.org/en/users/Documentation/acs
+-#CONFIG_ACS=y
++CONFIG_ACS=y
+ 
+ # Support Multi Band Operation
+ #CONFIG_MBO=y
+@@ -589,7 +589,7 @@ CONFIG_IBSS_RSN=y
+ #CONFIG_PMKSA_CACHE_EXTERNAL=y
+ 
+ # Mesh Networking (IEEE 802.11s)
+-#CONFIG_MESH=y
++CONFIG_MESH=y
+ 
+ # Background scanning modules
+ # These can be used to request wpa_supplicant to perform background scanning
+@@ -599,7 +599,7 @@ CONFIG_IBSS_RSN=y
+ CONFIG_BGSCAN_SIMPLE=y
+ # Learn channels used by the network and try to avoid bgscans on other
+ # channels (experimental)
+-#CONFIG_BGSCAN_LEARN=y
++CONFIG_BGSCAN_LEARN=y
+ 
+ # Opportunistic Wireless Encryption (OWE)
+ # Experimental implementation of draft-harkins-owe-07.txt
+diff --git wpa_supplicant/p2p_supplicant.c wpa_supplicant/p2p_supplicant.c
+index 55b3b08ef..68232e161 100644
+--- wpa_supplicant/p2p_supplicant.c
++++ wpa_supplicant/p2p_supplicant.c
+@@ -96,7 +96,7 @@
+ #define P2P_MAX_INITIAL_CONN_WAIT_GO_REINVOKE 15
+ #endif /* P2P_MAX_INITIAL_CONN_WAIT_GO_REINVOKE */
+ 
+-#define P2P_MGMT_DEVICE_PREFIX		"p2p-dev-"
++#define P2P_MGMT_DEVICE_PREFIX		"p2p-"
+ 
+ /*
+  * How many seconds to wait to re-attempt to move GOs, in case previous attempt

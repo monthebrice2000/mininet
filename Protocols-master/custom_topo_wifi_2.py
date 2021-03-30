@@ -1,0 +1,107 @@
+#sudo mn --custom ./custom_topo_wifi_2.py --topo mytopo --controller=remote,ip=127.0.0.1
+
+class MyTopo( Topo ):
+    "Simple topology example."
+    def __init__( self ):
+        "Create custom topo."
+
+        # Initialize topology
+        Topo.__init__( self )
+
+        # Add hosts and switches
+        sta1 = self.addStation('sta1')
+        sta2 = self.addStation('sta2')
+        sta3 = self.addStation('sta3')
+        sta4 = self.addStation('sta4')
+        sta5 = self.addStation('sta5')
+        sta6 = self.addStation('sta6')
+        sta7 = self.addStation('sta7')
+        ap1 = self.addAccessPoint('ap1')
+        ap2 = self.addAccessPoint('ap2')
+        ap3 = self.addAccessPoint('ap3')
+        ap4 = self.addAccessPoint('ap4')
+        ap5 = self.addAccessPoint('ap5')
+        ap6 = self.addAccessPoint('ap6')
+        ap7 = self.addAccessPoint('ap7')
+        ap8 = self.addAccessPoint('ap8')
+        ap9 = self.addAccessPoint('ap9')
+        ap10 = self.addAccessPoint('ap10')
+
+        # sta1 = net.addStation('sta1')
+        # sta2 = net.addStation('sta2')
+        # sta3 = net.addStation('sta3')
+        # sta4 = net.addStation('sta4')
+        # sta5 = net.addStation('sta5')
+        # sta6 = net.addStation('sta6')
+        # sta7 = net.addStation('sta7')
+        # ap1 = net.addAccessPoint('ap1')
+        # ap2 = net.addAccessPoint('ap2')
+        # ap3 = net.addAccessPoint('ap3')
+        # ap4 = net.addAccessPoint('ap4')
+        # ap5 = net.addAccessPoint('ap5')
+        # ap6 = net.addAccessPoint('ap6')
+        # ap7 = net.addAccessPoint('ap7')
+        # ap8 = net.addAccessPoint('ap8')
+        # ap9 = net.addAccessPoint('ap9')
+        # ap10 = net.addAccessPoint('ap10')
+
+        # self.setPropagationModel(model="logDistance", exp=4)
+        #
+        # self.configureWifiNodes()
+
+        # Add links
+        self.addLink(sta1, ap1)
+        self.addLink(sta2, ap1)
+        self.addLink(sta3, ap9)
+        self.addLink(sta4, ap9)
+        self.addLink(sta5, ap8)
+        self.addLink(sta6, ap4)
+        self.addLink(sta7, ap2)
+        self.addLink(ap1, ap2)
+        self.addLink(ap1, ap3)
+        self.addLink(ap1, ap10)
+        self.addLink(ap2, ap3)
+        self.addLink(ap10, ap5)
+        self.addLink(ap3, ap5)
+        self.addLink(ap3, ap4)
+        self.addLink(ap5, ap6)
+        self.addLink(ap5, ap4)
+        self.addLink(ap4, ap7)
+        self.addLink(ap7, ap6)
+        self.addLink(ap6, ap8)
+        self.addLink(ap7, ap9)
+        self.addLink(ap8, ap9)
+
+        # self.addLink(ap1, intf='ap1-wlan2', cls=mesh, ssid='meshNet12', mode='g', channel=5)
+        # self.addLink(ap2, intf='ap2-wlan2', cls=mesh, ssid='meshNet12', mode='g', channel=5)
+        # self.addLink(ap1, intf='ap1-wlan3', cls=mesh, ssid='meshNet13', mode='g', channel=5)
+        # self.addLink(ap3, intf='ap3-wlan1', cls=mesh, ssid='meshNet13', mode='g', channel=5)
+        # self.addLink(ap1, intf='ap1-wlan4', cls=mesh, ssid='meshNet110', mode='g', channel=5)
+        # self.addLink(ap10, intf='ap10-wlan2', cls=mesh, ssid='meshNet110', mode='g', channel=5)
+        # self.addLink(ap2, intf='ap2-wlan3', cls=mesh, ssid='meshNet23', mode='g', channel=5)
+        # self.addLink(ap3, intf='ap3-wlan2', cls=mesh, ssid='meshNet23', mode='g', channel=5)
+        # self.addLink(ap5, intf='ap5-wlan1', cls=mesh, ssid='meshNet510', mode='g', channel=5)
+        # self.addLink(ap10, intf='ap10-wlan3', cls=mesh, ssid='meshNet510', mode='g', channel=5)
+        # self.addLink(ap3, intf='ap3-wlan3', cls=mesh, ssid='meshNet35', mode='g', channel=5)
+        # self.addLink(ap5, intf='ap5-wlan2', cls=mesh, ssid='meshNet35', mode='g', channel=5)
+        # self.addLink(ap3, intf='ap3-wlan4', cls=mesh, ssid='meshNet34', mode='g', channel=5)
+        # self.addLink(ap4, intf='ap4-wlan2', cls=mesh, ssid='meshNet34', mode='g', channel=5)
+        # self.addLink(ap4, intf='ap4-wlan3', cls=mesh, ssid='meshNet45', mode='g', channel=5)
+        # self.addLink(ap5, intf='ap5-wlan3', cls=mesh, ssid='meshNet45', mode='g', channel=5)
+        # self.addLink(ap5, intf='ap5-wlan4', cls=mesh, ssid='meshNet56', mode='g', channel=5)
+        # self.addLink(ap6, intf='ap6-wlan2', cls=mesh, ssid='meshNet56', mode='g', channel=5)
+        # self.addLink(ap4, intf='ap4-wlan4', cls=mesh, ssid='meshNet47', mode='g', channel=5)
+        # self.addLink(ap7, intf='ap7-wlan2', cls=mesh, ssid='meshNet47', mode='g', channel=5)
+        # self.addLink(ap6, intf='ap6-wlan3', cls=mesh, ssid='meshNet67', mode='g', channel=5)
+        # self.addLink(ap7, intf='ap7-wlan3', cls=mesh, ssid='meshNet67', mode='g', channel=5)
+        # self.addLink(ap6, intf='ap6-wlan4', cls=mesh, ssid='meshNet68', mode='g', channel=5)
+        # self.addLink(ap8, intf='ap8-wlan2', cls=mesh, ssid='meshNet68', mode='g', channel=5)
+        # self.addLink(ap7, intf='ap7-wlan4', cls=mesh, ssid='meshNet79', mode='g', channel=5)
+        # self.addLink(ap9, intf='ap9-wlan2', cls=mesh, ssid='meshNet79', mode='g', channel=5)
+        # self.addLink(ap8, intf='ap8-wlan3', cls=mesh, ssid='meshNet89', mode='g', channel=5)
+        # self.addLink(ap9, intf='ap9-wlan3', cls=mesh, ssid='meshNet89', mode='g', channel=5)
+        #
+        # self.plotGraph(max_x=500, max_y=500)
+
+#sudo mn --custom custom_example.py --topo mytopo
+topos = { 'mytopo': ( lambda: MyTopo() ) }
